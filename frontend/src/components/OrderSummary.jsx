@@ -6,7 +6,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "../lib/axios";
 
 const stripePromise = loadStripe(
-	"pk_test_51KZYccCoOZF2UhtOwdXQl3vcizup20zqKqT9hVUIsVzsdBrhqbUI2fE0ZdEVLdZfeHjeyFXtqaNsyCJCmZWnjNZa00PzMAjlcL"
+	"pk_test_51QJpeEBi2GkxrMOn1pw7mYLufgweYirEL3EEighX29wceGSiTmQqM0b0SS7XjdOxjVl4kBTWQg3y7lY434T6fmDs00hRlF3IYx"
 );
 
 const OrderSummary = () => {
@@ -41,31 +41,31 @@ const OrderSummary = () => {
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.5 }}
 		>
-			<p className='text-xl font-semibold text-emerald-400'>Order summary</p>
+			<p className='text-xl font-semibold text-emerald-400'>Tóm tắt đơn hàng</p>
 
 			<div className='space-y-4'>
 				<div className='space-y-2'>
 					<dl className='flex items-center justify-between gap-4'>
-						<dt className='text-base font-normal text-gray-300'>Original price</dt>
-						<dd className='text-base font-medium text-white'>${formattedSubtotal}</dd>
+						<dt className='text-base font-normal text-gray-300'>Giá gốc</dt>
+						<dd className='text-base font-medium text-white'>{formattedSubtotal} VND</dd>
 					</dl>
 
 					{savings > 0 && (
 						<dl className='flex items-center justify-between gap-4'>
-							<dt className='text-base font-normal text-gray-300'>Savings</dt>
-							<dd className='text-base font-medium text-emerald-400'>-${formattedSavings}</dd>
+							<dt className='text-base font-normal text-gray-300'>Tiết kiệm</dt>
+							<dd className='text-base font-medium text-emerald-400'>-{formattedSavings} VND</dd>
 						</dl>
 					)}
 
 					{coupon && isCouponApplied && (
 						<dl className='flex items-center justify-between gap-4'>
-							<dt className='text-base font-normal text-gray-300'>Coupon ({coupon.code})</dt>
+							<dt className='text-base font-normal text-gray-300'>Mã giảm giá ({coupon.code})</dt>
 							<dd className='text-base font-medium text-emerald-400'>-{coupon.discountPercentage}%</dd>
 						</dl>
 					)}
 					<dl className='flex items-center justify-between gap-4 border-t border-gray-600 pt-2'>
-						<dt className='text-base font-bold text-white'>Total</dt>
-						<dd className='text-base font-bold text-emerald-400'>${formattedTotal}</dd>
+						<dt className='text-base font-bold text-white'>Tổng cộng</dt>
+						<dd className='text-base font-bold text-emerald-400'>{formattedTotal} VND</dd>
 					</dl>
 				</div>
 
@@ -75,16 +75,16 @@ const OrderSummary = () => {
 					whileTap={{ scale: 0.95 }}
 					onClick={handlePayment}
 				>
-					Proceed to Checkout
+					Chuyển đến Thanh toán
 				</motion.button>
 
 				<div className='flex items-center justify-center gap-2'>
-					<span className='text-sm font-normal text-gray-400'>or</span>
+					<span className='text-sm font-normal text-gray-400'>hoặc</span>
 					<Link
 						to='/'
 						className='inline-flex items-center gap-2 text-sm font-medium text-emerald-400 underline hover:text-emerald-300 hover:no-underline'
 					>
-						Continue Shopping
+						Tiếp tục mua sắm
 						<MoveRight size={16} />
 					</Link>
 				</div>

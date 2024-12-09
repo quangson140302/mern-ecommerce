@@ -35,7 +35,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
 	return (
 		<div className='py-12'>
 			<div className='container mx-auto px-4'>
-				<h2 className='text-center text-5xl sm:text-6xl font-bold text-emerald-400 mb-4'>Featured</h2>
+				<h2 className='text-center text-5xl sm:text-6xl font-bold text-emerald-400 mb-4'>Sản Phẩm Nổi Bật</h2>
 				<div className='relative'>
 					<div className='overflow-hidden'>
 						<div
@@ -55,7 +55,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
 										<div className='p-4'>
 											<h3 className='text-lg font-semibold mb-2 text-white'>{product.name}</h3>
 											<p className='text-emerald-300 font-medium mb-4'>
-												${product.price.toFixed(2)}
+												{product.price.toFixed(2)} VND
 											</p>
 											<button
 												onClick={() => addToCart(product)}
@@ -63,7 +63,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
 												flex items-center justify-center'
 											>
 												<ShoppingCart className='w-5 h-5 mr-2' />
-												Add to Cart
+												Thêm vào giỏ hàng
 											</button>
 										</div>
 									</div>
