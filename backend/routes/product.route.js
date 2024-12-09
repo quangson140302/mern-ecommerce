@@ -4,6 +4,7 @@ import {
 	deleteProduct,
 	getAllProducts,
 	getFeaturedProducts,
+	getProductDetail,
 	getProductsByCategory,
 	getRecommendedProducts,
 	toggleFeaturedProduct,
@@ -16,6 +17,7 @@ router.get("/", protectRoute, adminRoute, getAllProducts);
 router.get("/featured", getFeaturedProducts);
 router.get("/category/:category", getProductsByCategory);
 router.get("/recommendations", getRecommendedProducts);
+router.get("/:id", getProductDetail)
 router.post("/", protectRoute, adminRoute, createProduct);
 router.patch("/:id", protectRoute, adminRoute, toggleFeaturedProduct);
 router.delete("/:id", protectRoute, adminRoute, deleteProduct);

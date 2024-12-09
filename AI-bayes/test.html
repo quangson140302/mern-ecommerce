@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentiment Prediction</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>Predict Sentiment</h1>
+  <form id="prediction-form">
+    <label for="comment">Comment:</label><br>
+    <textarea id="comment" name="comment" rows="4" cols="50" required></textarea><br><br>
+    
+    <label for="rating">Rating (1-10):</label><br>
+    <input type="number" id="rating" name="rating" min="1" max="10" required><br><br>
+    
+    <button type="submit">Predict</button>
+  </form>
+  
+  <h3 id="result"></h3>
+
+  <script>
+    $(document).ready(function() {
+      $("#prediction-form").on("submit", function(event) {
+        event.preventDefault();
+        
+        const comment = $("#comment").val();
+        const rating = $("#rating").val();
+        
+        // Gửi yêu cầu đến API Flask
+        $.ajax({
+          url: "http://127.0.0.1:5000/predict",
+          type: "POST",
+          contentType: "application/json",
+          data: JSON.stringify({ comment: comment, rating: rating }),
+          success: function(response) {
+            if (response.prediction === 1) {
+              $("#result").text("Prediction: Positive");
+            } else if (response.prediction === 0) {
+              $("#result").text("Prediction: Neutral");
+            } else {
+              $("#result").text("Prediction: Negative");
+            }
+          },
+          error: function(error) {
+            $("#result").text("Error: " + error.responseJSON.error);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

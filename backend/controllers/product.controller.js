@@ -1,6 +1,7 @@
 import { redis } from "../lib/redis.js";
 import cloudinary from "../lib/cloudinary.js";
 import Product from "../models/product.model.js";
+import Review from "../models/review.model.js";
 
 export const getAllProducts = async (req, res) => {
 	try {
@@ -11,6 +12,31 @@ export const getAllProducts = async (req, res) => {
 		res.status(500).json({ message: "Server error", error: error.message });
 	}
 };
+
+export const getProductDetail = async (req, res) => {
+  const id = req.params.id;
+  console.log("Product ID: " + id);
+  
+  try {
+    // First, fetch the product details using the product ID
+    const productDetail = await Product.findById(id);
+
+    // If product not found, return 404
+    if (!productDetail) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    // Fetch all reviews for the given productId
+    const reviews = await Review.find({ productId: id }).exec();
+
+    // Return the product details along with the reviews
+    res.json({ productDetail, reviews });
+  } catch (error) {
+    console.log("Error in getProductDetail controller", error.message);
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
 
 export const getFeaturedProducts = async (req, res) => {
 	try {
@@ -117,14 +143,18 @@ export const getRecommendedProducts = async (req, res) => {
 
 export const getProductsByCategory = async (req, res) => {
 	const { category } = req.params;
+	console.log(category)
 	try {
-		const products = await Product.find({ category });
+		// Sử dụng regex để tìm kiếm không phân biệt chữ hoa chữ thường
+		const products = await Product.find({ category: { $regex: new RegExp(`^${category}$`, 'i') } });
+		console.log(products)
 		res.json({ products });
 	} catch (error) {
 		console.log("Error in getProductsByCategory controller", error.message);
 		res.status(500).json({ message: "Server error", error: error.message });
 	}
 };
+
 
 export const toggleFeaturedProduct = async (req, res) => {
 	try {

@@ -13,6 +13,8 @@ const CategoryPage = () => {
 		fetchProductsByCategory(category);
 	}, [fetchProductsByCategory, category]);
 
+	console.log("category", category);
+	
 	console.log("products:", products);
 	return (
 		<div className='min-h-screen'>
@@ -34,7 +36,7 @@ const CategoryPage = () => {
 				>
 					{products?.length === 0 && (
 						<h2 className='text-3xl font-semibold text-gray-300 text-center col-span-full'>
-							No products found
+							Không tìm thấy sản phẩm
 						</h2>
 					)}
 

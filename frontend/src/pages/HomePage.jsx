@@ -4,13 +4,13 @@ import { useProductStore } from "../stores/useProductStore";
 import FeaturedProducts from "../components/FeaturedProducts";
 
 const categories = [
-	{ href: "/jeans", name: "Jeans", imageUrl: "/jeans.jpg" },
-	{ href: "/t-shirts", name: "T-shirts", imageUrl: "/tshirts.jpg" },
-	{ href: "/shoes", name: "Shoes", imageUrl: "/shoes.jpg" },
-	{ href: "/glasses", name: "Glasses", imageUrl: "/glasses.png" },
-	{ href: "/jackets", name: "Jackets", imageUrl: "/jackets.jpg" },
-	{ href: "/suits", name: "Suits", imageUrl: "/suits.jpg" },
-	{ href: "/bags", name: "Bags", imageUrl: "/bags.jpg" },
+	{ href: "/Thit", name: "Thịt", imageUrl: "/thit.webp" },
+	{ href: "/Ca", name: "Cá - Hải sản", imageUrl: "/ca.png" },
+	{ href: "/Do-Kho", name: "Đồ khô", imageUrl: "/dokho.webp" },
+	{ href: "/Gia-Vi", name: "Gia vị", imageUrl: "/giavi.webp" },
+	{ href: "/Banh-Keo", name: "Bánh kẹo", imageUrl: "/banhkeo.webp" },
+	{ href: "/Do-Uong", name: "Đồ uống", imageUrl: "/douong.webp" },
+	{ href: "/Rau-Cu", name: "Rau củ", imageUrl: "/raucu.webp" },
 ];
 
 const HomePage = () => {
@@ -24,10 +24,10 @@ const HomePage = () => {
 		<div className='relative min-h-screen text-white overflow-hidden'>
 			<div className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16'>
 				<h1 className='text-center text-5xl sm:text-6xl font-bold text-emerald-400 mb-4'>
-					Explore Our Categories
+				Khám Phá Các Món Ăn Ngon Của Chúng Tôi
 				</h1>
 				<p className='text-center text-xl text-gray-300 mb-12'>
-					Discover the latest trends in eco-friendly fashion
+				Tận hưởng những món ăn ngon miệng được chuẩn bị từ nguyên liệu tươi ngon
 				</p>
 
 				<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
